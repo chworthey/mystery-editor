@@ -3,7 +3,8 @@ import * as d3 from 'd3';
 import * as yaml from 'js-yaml';
 import * as monaco from 'monaco-editor';
 import { MysterySchema } from './Models/MysteryModel';
-import { SimulationNodeDatum, SimulationLinkDatum, min } from 'd3';
+import { SimulationNodeDatum, SimulationLinkDatum } from 'd3';
+import { ContentBaseURL } from './Config';
 
 interface IError {
   errorTitle: string;
@@ -449,20 +450,20 @@ export class Mystery extends React.Component<IMysteryProps, IMysteryState> {
       .attr("class", "node")
       .attr("href", (d: GraphNode) => {
         if (d.IsStart) {
-          return '/graph/star.png';
+          return `${ContentBaseURL}/graph/star.png`;
         }
         if (d.IsEnd) {
-          return '/graph/trophy.png';
+          return `${ContentBaseURL}/graph/trophy.png`;
         }
         if (d.IsRedHerring) {
-          return '/graph/red-herring.png';
+          return `${ContentBaseURL}/graph/red-herring.png`;
         }
 
         if (d.Locked) {
-          return d.Complexity > 1 ? '/graph/locked-puzzle.png' : '/graph/lock.png';
+          return d.Complexity > 1 ? `${ContentBaseURL}/graph/locked-puzzle.png` : `${ContentBaseURL}/graph/lock.png`;
         }
         else {
-          return d.Complexity > 1 ? '/graph/puzzle.png' : '/graph/button.png';
+          return d.Complexity > 1 ? `${ContentBaseURL}/graph/puzzle.png` : `${ContentBaseURL}/graph/button.png`;
         }
       })
       .attr("width", 64).attr("height", 64)
@@ -552,7 +553,7 @@ export class Mystery extends React.Component<IMysteryProps, IMysteryState> {
           });
         }
 
-        fetch('/mysteries/mystery.schema.json').then(r2 => {
+        fetch(`${ContentBaseURL}/mysteries/mystery.schema.json`).then(r2 => {
           r2.json().then(j => {
             var Ajv = require('ajv');
             var ajv = new Ajv();

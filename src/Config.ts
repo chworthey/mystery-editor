@@ -1,0 +1,1 @@
+export var ContentBaseURL = 'http://mystery.azureedge.net';

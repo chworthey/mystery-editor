@@ -23,7 +23,7 @@ Interactables:
   - the_book
 - Id: chest
   Description: A chest containing a 'prize'
-  RequiredKeys:
+  KeysRequired:
   - the_key
   ComplexityScore: 1
   OnInteractionCompletion:
@@ -49,7 +49,7 @@ Interactables:
   - missing_piece_of_puzzle2
 - Id: puzzle2
   Description: A puzzle that leads to the map
-  RequiredKeys:
+  KeysRequired:
   - missing_piece_of_puzzle2
   ComplexityScore: 600
   OnInteractionCompletion:
@@ -57,7 +57,7 @@ Interactables:
   - the_map
 - Id: the_map
   Description: A map which leads to key when combined with plastic sheet (that has an X on it)
-  RequiredKeys:
+  KeysRequired:
   - plastic_sheet
   ComplexityScore: 400
   OnInteractionCompletion:
