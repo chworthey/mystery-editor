@@ -1,1 +1,1 @@
-export var ContentBaseURL = 'http://mystery.azureedge.net';
+export var ContentBaseURL = 'https://mystery.azureedge.net';
