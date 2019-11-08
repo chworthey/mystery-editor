@@ -1,0 +1,49 @@
+---
+# MYSTERY EXAMPLE 1
+# The Door with 3 locks
+# One day, you stumble across a note on the ground outside an odd building with a door...
+
+InitialInteractableId: note_on_ground
+FinalGoalId: GOAL
+
+Keys:
+- Id: diamond_key
+  Description: A diamond key awarded for completing the 1st puzzle.
+- Id: emerald_key
+  Description: An emerald key awarded for completing the 2nd puzzle.
+- Id: sapphire_key
+  Description: A sapphire key awarded for completing the 3rd puzzle. 
+
+Interactables:
+- Id: note_on_ground
+  Description: A mysterious note you find on the ground. Speaks of treasure located behind door, and points at the 3 statues nearby containing puzzles.
+  ComplexityScore: 1
+  OnInteractionCompletion:
+  - lion_statue_puzzle
+  - gargoyle_statue_puzzle
+  - horse_statue_puzzle
+  - door_with_three_locks
+- Id: lion_statue_puzzle
+  Description: A statue of a lion with a fantastic puzzle inside! Puzzle unlocks secret compartment with diamond key.
+  ComplexityScore: 300
+  OnInteractionCompletion:
+  - diamond_key
+- Id: gargoyle_statue_puzzle
+  Description: A statue of a gargoyle with a fantastic puzzle inside! Puzzle unlocks secret compartment with emerald key.
+  ComplexityScore: 350
+  OnInteractionCompletion:
+  - emerald_key
+- Id: horse_statue_puzzle
+  Description: A statue of a horse with a fantastic puzzle inside! Puzzle unlocks secret compartment with sapphire key.
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - sapphire_key
+- Id: door_with_three_locks
+  Description: A big door with 3 locks on it. One diamond, one emerald, and one sapphire. Behind the door sits the treasure!
+  ComplexityScore: 1
+  KeysRequired:
+  - diamond_key
+  - emerald_key
+  - sapphire_key
+  OnInteractionCompletion:
+  - GOAL

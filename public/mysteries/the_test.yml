@@ -1,0 +1,117 @@
+---
+# THE TEST
+# You wake up in a strange room... You don't remember how you got there...
+# All the sudden, a loud deep voice booms from everywhere at once
+# "YOU HAVE BEEN CHOSEN AS A COMBATANT FOR THE CRUCIBLE. YOU MUST COMPLETE THE
+# THREE PUZZLE CHAMBERS OR DIE TRYING. SPECTATORS WILL BE WATCHING. GOOD LUCK."
+
+InitialInteractableId: booming_voice
+FinalGoalId: GOAL
+
+Keys:
+- Id: diamond_key
+  Description: A key awarded for completing the 1st puzzle in the 1st chamber.
+- Id: emerald_key
+  Description: An key awarded for completing the 2nd puzzle in the 1st chamber.
+- Id: sapphire_key
+  Description: A key awarded for completing the 3rd puzzle in the 1st chamber.
+- Id: silver_key
+  Description: A key awarded for completing the 1st puzzle in the 2nd chamber.
+- Id: gold_key
+  Description: An key awarded for completing the 2nd puzzle in the 2nd chamber.
+- Id: platinum_key
+  Description: A key awarded for completing the 3rd puzzle in the 2nd chamber.
+- Id: ice_key
+  Description: A key awarded for completing the 1st puzzle in the 3rd chamber.
+- Id: lava_key
+  Description: An key awarded for completing the 2nd puzzle in the 3rd chamber.
+- Id: energy_key
+  Description: A key awarded for completing the 3rd puzzle in the 3rd chamber.
+
+Interactables:
+- Id: booming_voice
+  Description: A mysterious voice instructing you to complete the 3 chambers or die.
+  ComplexityScore: 1
+  OnInteractionCompletion:
+  - lion_statue_puzzle
+  - gargoyle_statue_puzzle
+  - horse_statue_puzzle
+  - chamber_2_door
+- Id: lion_statue_puzzle
+  Description: A statue of a lion with a fantastic puzzle inside! Puzzle unlocks secret compartment with diamond key.
+  ComplexityScore: 300
+  OnInteractionCompletion:
+  - diamond_key
+- Id: gargoyle_statue_puzzle
+  Description: A statue of a gargoyle with a fantastic puzzle inside! Puzzle unlocks secret compartment with emerald key.
+  ComplexityScore: 350
+  OnInteractionCompletion:
+  - emerald_key
+- Id: horse_statue_puzzle
+  Description: A statue of a horse with a fantastic puzzle inside! Puzzle unlocks secret compartment with sapphire key.
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - sapphire_key
+- Id: chamber_2_door
+  Description: A big door with 3 locks on it that leads to the 2nd chamber
+  ComplexityScore: 1
+  KeysRequired:
+  - diamond_key
+  - emerald_key
+  - sapphire_key
+  OnInteractionCompletion:
+  - chamber_3_door
+  - poison_trap
+  - fire_trap
+  - spike_trap
+- Id: poison_trap
+  Description: An obstacle course with a pit of poison and a key at the end
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - silver_key
+- Id: fire_trap
+  Description: An obstacle course with a pit of poison and a key at the end
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - gold_key
+- Id: spike_trap
+  Description: An obstacle course with a pit of poison and a key at the end
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - platinum_key
+- Id: chamber_3_door
+  Description: A big door with 3 locks on it that leads to the 3rd chamber
+  ComplexityScore: 1
+  KeysRequired:
+  - gold_key
+  - platinum_key
+  - silver_key
+  OnInteractionCompletion:
+  - final_door
+  - tentacle_beast
+  - giant_stone_beast
+  - wizard_beast
+- Id: tentacle_beast
+  Description: A vicous beast that will kill you, but there's a key at the end
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - ice_key
+- Id: giant_stone_beast
+  Description: A vicous beast that will kill you, but there's a key at the end
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - lava_key
+- Id: wizard_beast
+  Description: A vicous beast that will kill you, but there's a key at the end
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - energy_key
+- Id: final_door
+  Description: A big door with 3 locks on it that completes the game when unlocked & opened
+  ComplexityScore: 1
+  KeysRequired:
+  - ice_key
+  - lava_key
+  - energy_key
+  OnInteractionCompletion:
+  - GOAL

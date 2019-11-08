@@ -1,0 +1,82 @@
+---
+# SO CLOSE YET SO FAR
+# A cloaked figure gives you a written contract, and tells you to sign it... 
+# After signing it, the cloaked figure shows you to a locked chest (supposedly has a prize) and gives you a book...
+
+InitialInteractableId: contract
+FinalGoalId: GOAL
+
+Keys:
+- Id: the_key
+  Description: The key that allows participant to end the game
+- Id: plastic_sheet
+  Description: An item that can be combined with the map to reveal a hidden location (plastic overlay with X on it)
+- Id: missing_piece_of_puzzle2
+  Description: A missing piece of puzzle2
+
+Interactables:
+- Id: contract
+  Description: A sketchy written contract that basically asks for permission to use your brain
+  ComplexityScore: 1
+  OnInteractionCompletion:
+  - chest
+  - the_book
+- Id: chest
+  Description: A chest containing a 'prize'
+  RequiredKeys:
+  - the_key
+  ComplexityScore: 1
+  OnInteractionCompletion:
+  - GOAL
+- Id: the_book
+  Description: A book that has a few puzzles written in it
+  ComplexityScore: 1
+  OnInteractionCompletion:
+  - puzzle0
+  - puzzle1
+  - puzzle2
+- Id: puzzle0
+  Description: A puzzle that yields some useful items
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - story0
+  - plastic_sheet
+- Id: puzzle1
+  Description: A puzzle that yields some useful items
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - story1
+  - missing_piece_of_puzzle2
+- Id: puzzle2
+  Description: A puzzle that leads to the map
+  RequiredKeys:
+  - missing_piece_of_puzzle2
+  ComplexityScore: 600
+  OnInteractionCompletion:
+  - story2
+  - the_map
+- Id: the_map
+  Description: A map which leads to key when combined with plastic sheet (that has an X on it)
+  RequiredKeys:
+  - plastic_sheet
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - story3
+  - key_location
+- Id: key_location
+  Description: The location of the key
+  ComplexityScore: 1
+  OnInteractionCompletion:
+  - the_key
+- Id: story0
+  Description: Some interesting story
+  ComplexityScore: 1
+- Id: story1
+  Description: Some interesting story
+  ComplexityScore: 1
+- Id: story2
+  Description: Some interesting story
+  ComplexityScore: 1
+- Id: story3
+  Description: Some interesting story (finale)
+  ComplexityScore: 1

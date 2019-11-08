@@ -1,0 +1,32 @@
+---
+# Kind of like portal...
+
+InitialInteractableId: chamber0
+FinalGoalId: GOAL
+
+Interactables:
+- Id: chamber0
+  Description: A portal chamber
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - chamber1
+- Id: chamber1
+  Description: A portal chamber
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - chamber2
+- Id: chamber2
+  Description: A portal chamber
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - chamber3
+- Id: chamber3
+  Description: A portal chamber
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - chamber4
+- Id: chamber4
+  Description: A portal chamber
+  ComplexityScore: 400
+  OnInteractionCompletion:
+  - GOAL

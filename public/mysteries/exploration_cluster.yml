@@ -1,0 +1,139 @@
+FinalGoalId: GOAL
+InitialInteractableId: room_0
+Interactables:
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_0
+  OnInteractionCompletion:
+  - room_1
+  - room_5
+  - room_10
+  - room_8
+  - room_12
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_1
+  OnInteractionCompletion:
+  - room_2
+  - room_0
+  - room_7
+  - room_8
+  - room_9
+  - room_11
+  - room_12
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_2
+  OnInteractionCompletion:
+  - room_3
+  - room_1
+  - room_5
+  - room_12
+  - room_6
+  - room_9
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_3
+  OnInteractionCompletion:
+  - room_4
+  - room_2
+  - room_6
+  - room_15
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_4
+  OnInteractionCompletion:
+  - last_room
+  - room_3
+  - room_6
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: last_room
+  OnInteractionCompletion:
+  - GOAL
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_5
+  OnInteractionCompletion:
+  - room_0
+  - room_2
+  - room_7
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_6
+  OnInteractionCompletion:
+  - room_3
+  - room_4
+  - room_2
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_7
+  OnInteractionCompletion:
+  - room_8
+  - room_5
+  - room_1
+  - room_17
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_8
+  OnInteractionCompletion:
+  - room_1
+  - room_7
+  - room_0
+  - room_19
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_9
+  OnInteractionCompletion:
+  - room_2
+  - room_1
+  - room_13
+  - room_14
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_10
+  OnInteractionCompletion: []
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_11
+  OnInteractionCompletion: []
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_12
+  OnInteractionCompletion:
+  - room_1
+  - room_2
+  - room_0
+  - room_14
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_13
+  OnInteractionCompletion: []
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_14
+  OnInteractionCompletion:
+  - room_16
+  - room_12
+  - room_9
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_15
+  OnInteractionCompletion: []
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_16
+  OnInteractionCompletion:
+  - room_18
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_17
+  OnInteractionCompletion: []
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_18
+  OnInteractionCompletion: []
+- ComplexityScore: 1
+  Description: Exploration cluster for room
+  Id: room_19
+  OnInteractionCompletion: []

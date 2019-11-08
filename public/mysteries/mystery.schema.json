@@ -1,0 +1,144 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Represents schema for a mystery game progression scheme.",
+  "required": [
+    "InitialInteractableId",
+    "FinalGoalId",
+    "Interactables"
+  ],
+  "properties": {
+    "InitialInteractableId": {
+      "$id": "#/properties/InitialInteractableId",
+      "type": "string",
+      "title": "The Id of the 1st interactable the player encounters, kicking off the whole mystery.",
+      "default": "",
+      "examples": [
+        "int0"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "FinalGoalId": {
+      "$id": "#/properties/FinalGoalId",
+      "type": "string",
+      "title": "An arbitrary unique id for winning the game. Interactables can use this Id to mark game completion upon interaction.",
+      "default": "GOAL",
+      "examples": [
+        "GOAL"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "Keys": {
+      "$id": "#/properties/Keys",
+      "type": "array",
+      "title": "A manifest of all of the items/info the player must keep track of in order to use on matching interactables.",
+      "items": {
+        "$id": "#/properties/Keys/items",
+        "type": "object",
+        "title": "This is a key. A key could be a key in the literal sense, or it could be a piece of information that enables completion of another puzzle.",
+        "required": [
+          "Id"
+        ],
+        "properties": {
+          "Id": {
+            "$id": "#/properties/Keys/items/properties/Id",
+            "type": "string",
+            "title": "A unique identifier string",
+            "default": "",
+            "examples": [
+              "key0"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "Description": {
+            "$id": "#/properties/Keys/items/properties/Description",
+            "type": "string",
+            "title": "A description for how the key manifests itself in the game (what is it?)",
+            "default": "",
+            "examples": [
+              "A diamond key awarded for completing the 1st puzzle."
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    },
+    "Interactables": {
+      "$id": "#/properties/Interactables",
+      "type": "array",
+      "title": "A manifest of all interactables in the game. Interactables can vary from simple mechanical devices like levers and buttons to entire puzzles. Upon interaction completion, they can yield keys, reveal more interactables, or win the game for the player",
+      "items": {
+        "$id": "#/properties/Interactables/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "Id"
+        ],
+        "properties": {
+          "Id": {
+            "$id": "#/properties/Interactables/items/properties/Id",
+            "type": "string",
+            "title": "A unique identifier string",
+            "default": "",
+            "examples": [
+              "int0"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "Description": {
+            "$id": "#/properties/Interactables/items/properties/Description",
+            "type": "string",
+            "title": "A description for how the key manifests itself in the game (what is it?)",
+            "default": "",
+            "examples": [
+              "A statue of a lion. Contains a puzzle within which, upon completion, will reveal the diamond key."
+            ],
+            "pattern": "^(.*)$"
+          },
+          "ComplexityScore": {
+            "$id": "#/properties/Interactables/items/properties/ComplexityScore",
+            "type": "number",
+            "title": "An approximation of the difficulty of interaction. A higher number means higher difficulty. General forumula: # of solutions * # of steps required * # of mechanics involved * # of objects of interest",
+            "default": 1,
+            "examples": [
+              1
+            ]
+          },
+          "KeysRequired": {
+            "$id": "#/properties/Interactables/items/properties/KeysRequired",
+            "type": "array",
+            "title": "A list of the key id's required in order to enable completion of the interaction.",
+            "items": {
+              "$id": "#properties/Interactables/items/properties/KeysRequired/items",
+              "type": "string",
+              "title": "A unique key id that matches one of the keys declared",
+              "default": "",
+              "examples": [
+                "key0"
+              ],
+              "pattern": "^(.*)$"
+            }
+          },
+          "OnInteractionCompletion": {
+            "$id": "#/properties/Interactables/items/properties/OnInteractionCompletion",
+            "type": "array",
+            "title": "A list of identifiers that could be any of: key id's, interactable id's, or the goal id. When a key id is listed, it means that the key is acquired by the player upon interaction completion of this interactable. When an interactable id is listed, it means that the interactable mentioned becomes revealed to the player (by default all interactables are hidden except for the initial interactable) upon completion of this interactable. When the goal id is listed, it means that the game is won by the player upon completion of this interactable.",
+            "items": {
+              "$id": "#/properties/Interactables/items/properties/OnInteractionCompletion/items",
+              "type": "string",
+              "title": "The unique id of an interactable, key, or goal.",
+              "default": "",
+              "examples": [
+                "int0",
+                "key0",
+                "GOAL"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        }
+      }
+    }
+  }
+}
