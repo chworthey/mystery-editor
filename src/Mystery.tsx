@@ -574,6 +574,18 @@ export class Mystery extends React.Component<IMysteryProps, IMysteryState> {
     fetch(this.props.yamlUrl).then(r => {
       r.text().then(t => {
         if (this.editor) {
+
+          (window as any).MonacoEnvironment = {
+            getWorkerUrl: function(workerId: any, label: any) {
+              return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+                self.MonacoEnvironment = {
+                  baseUrl: 'https://mystery.azureedge.net/'
+                };
+                importScripts('https://mystery.azureedge.net/worker/workerMain.js');`
+              )}`;
+            }
+          };
+
           this.monacoEditor = monaco.editor.create(this.editor, {
             value: t,
             language: 'yaml',
