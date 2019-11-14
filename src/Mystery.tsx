@@ -204,6 +204,27 @@ export class Mystery extends React.Component<IMysteryProps, IMysteryState> {
             islandCheckFn(i.Id);
           });
         }
+
+        if (errors.length === 0) {
+          var keysRequiredIds = new Set<string>();
+
+          this.currentDoc.Interactables.forEach(i => {
+            if (i.KeysRequired) {
+              i.KeysRequired.forEach(kr => { keysRequiredIds.add(kr); });
+            }
+          });
+
+          if (this.currentDoc.Keys) {
+            this.currentDoc.Keys.forEach(k => {
+              if (!keysRequiredIds.has(k.Id)) {
+                errors.push({
+                  errorTitle: 'Dangling Key',
+                  errorMessage: `There are no interactables that list key '${k.Id}' in the list of KeysRequired.`
+                });
+              }
+            })
+          }
+        }
       }
     }
     catch(e) {
@@ -307,6 +328,20 @@ export class Mystery extends React.Component<IMysteryProps, IMysteryState> {
   }
 
   attachDiagram = () => {
+    try {
+      this.attachDiagramWrapped();
+    }
+    catch (e) {
+      this.setState({
+        errors: [{
+          errorTitle: 'Attach Diagram Error',
+          errorMessage: 'An error was uncaught by validator but occured when building node graph.'
+        }]
+      })
+    }
+  }
+
+  attachDiagramWrapped = () => {
     if (!this.currentDoc || !this.ref) {
       return;
     }
